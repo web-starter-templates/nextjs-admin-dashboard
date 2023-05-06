@@ -5,7 +5,11 @@ import { Box, Container, styled } from '@mui/material';
 const PageTitle = styled(Box)(
   ({ theme }) => `
         padding: ${theme.spacing(4)};
-`
+//         overflow: auto;
+//     background: ${theme.palette.common.white};
+//     flex: 1;
+//     overflow-x: hidden;
+// `
 );
 
 interface PageTitleWrapperProps {

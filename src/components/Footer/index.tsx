@@ -18,7 +18,7 @@ function Footer() {
       >
         <Box>
           <Typography variant="subtitle1">
-            &copy; 2022 - Tokyo Free White Next.js Typescript Admin Dashboard
+            &copy; {new Date().getFullYear()} - 1Stop Laundry - www.1stoplaundry.com
           </Typography>
         </Box>
         <Typography
@@ -27,14 +27,14 @@ function Footer() {
           }}
           variant="subtitle1"
         >
-          Crafted by{' '}
+          {/* Crafted by{' '}
           <Link
             href="https://bloomui.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             BloomUI.com
-          </Link>
+          </Link> */}
         </Typography>
       </Box>
     </FooterWrapper>

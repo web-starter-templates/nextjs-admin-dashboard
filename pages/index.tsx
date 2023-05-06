@@ -14,6 +14,9 @@ import Head from 'next/head';
 
 import Logo from 'src/components/LogoSign';
 import Hero from 'src/content/Overview/Hero';
+import SidebarLayout from '@/layouts/SidebarLayout';
+import { useAuth } from '@/contexts/AuthContext';
+import Label from '@/components/Label';
 
 const HeaderWrapper = styled(Card)(
   ({ theme }) => `
@@ -21,7 +24,7 @@ const HeaderWrapper = styled(Card)(
   display: flex;
   align-items: center;
   height: ${theme.spacing(10)};
-  margin-bottom: ${theme.spacing(10)};
+
 `
 );
 
@@ -31,51 +34,34 @@ const OverviewWrapper = styled(Box)(
     background: ${theme.palette.common.white};
     flex: 1;
     overflow-x: hidden;
+    padding-bottom: ${theme.spacing(10)};
 `
 );
 
 function Overview() {
+
+  const { user } = useAuth()
+
+  if (!user) return <></>
+
   return (
     <OverviewWrapper>
       <Head>
-        <title>Tokyo Free White NextJS Typescript Admin Dashboard</title>
+        <title>1Stop Laundry</title>
       </Head>
-      <HeaderWrapper>
-        <Container maxWidth="lg">
-          <Box display="flex" alignItems="center">
-            <Logo />
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              flex={1}
-            >
-              <Box />
-              <Box>
-                <Button
-                  component={Link}
-                  href="/dashboards/crypto"
-                  variant="contained"
-                  sx={{ ml: 2 }}
-                >
-                  Live Preview
-                </Button>
-              </Box>
-            </Box>
-          </Box>
-        </Container>
-      </HeaderWrapper>
-      <Hero />
       <Container maxWidth="lg" sx={{ mt: 8 }}>
-        <Typography textAlign="center" variant="subtitle1">
-          Crafted by{' '}
-          <Link
-            href="https://bloomui.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            BloomUI.com
-          </Link>
+        <Typography textAlign="center" variant="inherit">
+           
+          Welcome to the 1StopLaundry Dashboard, <b>{ user.firstName}</b>
+          { !user.roles.length && 
+          <>
+            <br/><br/>
+            <Label color="info" >
+            We'll activate your account shortly.
+            </Label>
+          </>
+          }
+          
         </Typography>
       </Container>
     </OverviewWrapper>
@@ -85,5 +71,5 @@ function Overview() {
 export default Overview;
 
 Overview.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return <SidebarLayout>{page}</SidebarLayout>;
 };
