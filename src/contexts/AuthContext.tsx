@@ -9,6 +9,7 @@ import useFirebase from './config';
 import { useRouter } from 'next/router';
 import { User } from '@/types';
 import { createAppUser } from '@/helpers/api-utils';
+import { User as FirebaseUser} from 'firebase/auth';
 
 type AuthContextType = {
   token?: string
@@ -24,13 +25,13 @@ export const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 export function AuthUserProvider({ children }) {
   const firebaseApp = useFirebase();
   const auth = getAuth(firebaseApp);
-  const [baseUser, setBaseUser] = useState<LaundryUser | null>(null);
+  const [baseUser, setBaseUser] = useState<FirebaseUser | null>(null);
   const [user, setUser] = useState();
   const [token, setToken] = useState(null)
   const router = useRouter();
   const [loading, setLoading] = useState(false)
 
-    // Get the backend user if not found!
+    // Get the auth token if none exist
     useEffect(() => {
       const getUserToken = async() => {
         if (baseUser) {
@@ -57,6 +58,7 @@ export function AuthUserProvider({ children }) {
   }, [baseUser]);
 
   // Route to login if no user found!
+  // Set the user once they're logged in
   useEffect(() => {
     return auth.onIdTokenChanged(async (baseUser) => {
       console.log("ID Token changed.")
@@ -104,7 +106,7 @@ export function AuthUserProvider({ children }) {
   const login = async (email: string, password: string) => {
     const response = await signInWithEmailAndPassword(auth, email, password);
     console.log(response)
-    router.replace('/')
+    router.replace('/dashboards/crypto')
     return
   };
 

@@ -47,12 +47,12 @@ function Overview() {
   return (
     <OverviewWrapper>
       <Head>
-        <title>1Stop Laundry</title>
+        <title>NextJS Starter</title>
       </Head>
       <Container maxWidth="lg" sx={{ mt: 8 }}>
         <Typography textAlign="center" variant="inherit">
            
-          Welcome to the 1StopLaundry Dashboard, <b>{ user.firstName}</b>
+          Welcome to the NextJS Dashboard, <b>{ user.firstName}</b>
           { !user.roles.length && 
           <>
             <br/><br/>

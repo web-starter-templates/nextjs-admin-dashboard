@@ -170,69 +170,7 @@ function SidebarMenu() {
   return (
     <>
       <MenuWrapper>
-        {/* <List component="div">
-          <SubMenuWrapper>
-            <List component="div">
-              <ListItem component="div">
-                <NextLink href="/" passHref>
-                  <Button
-                    className={currentRoute === '="/' ? 'active' : ''}
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<DesignServicesTwoToneIcon />}
-                  >
-                    Overview
-                  </Button>
-                </NextLink>
-              </ListItem>
-            </List>
-          </SubMenuWrapper>
-        </List> */}
-        {/* <List
-          component="div"
-          subheader={
-            <ListSubheader component="div" disableSticky>
-              Dashboards
-            </ListSubheader>
-          }
-        >
-          <SubMenuWrapper>
-            <List component="div">
-              <ListItem component="div">
-                <NextLink href="/dashboards/crypto" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/dashboards/crypto' ? 'active' : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<BrightnessLowTwoToneIcon />}
-                  >
-                    Cryptocurrency
-                  </Button>
-                </NextLink>
-              </ListItem>
-              <ListItem component="div">
-                <NextLink href="/applications/messenger" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/applications/messenger' ? 'active' : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<MmsTwoToneIcon />}
-                  >
-                    Messenger
-                  </Button>
-                </NextLink>
-              </ListItem>
-            </List>
-          </SubMenuWrapper>
-        </List> */}
-        { user.roles.includes(UserRoles.DRIVER) && (<List
+        { user.roles.includes(UserRoles.USER) && (<List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
@@ -285,55 +223,6 @@ function SidebarMenu() {
                   <Button
                     className={
                       currentRoute === '/drivers/history'
-                        ? 'active'
-                        : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<HistoryTwoTone />}
-                  >
-                    History
-                  </Button>
-                  
-                </NextLink>
-              </ListItem>
-            </List>
-          </SubMenuWrapper>
-        </List>)}
-        { user.roles.includes(UserRoles.CLEANER) && (<List
-          component="div"
-          subheader={
-            <ListSubheader component="div" disableSticky>
-              Cleaners
-            </ListSubheader>
-          }
-        >
-          <SubMenuWrapper>
-            <List component="div">
-              <ListItem component="div">
-                <NextLink href="/cleaners/open" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/cleaners/open'
-                        ? 'active'
-                        : ''
-                    }
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<LocalLaundryService />}
-                  >
-                    Live
-                  </Button>
-                  
-                </NextLink>
-              </ListItem>
-              <ListItem component="div">
-                <NextLink href="/cleaners/history" passHref>
-                  <Button
-                    className={
-                      currentRoute === '/cleaners/history'
                         ? 'active'
                         : ''
                     }
